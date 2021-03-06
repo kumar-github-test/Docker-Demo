@@ -24,17 +24,15 @@ pipeline {
               
                 sh 'docker build -t proj3:latest .' 
                 sh 'docker tag proj3 dockertestkumar/proj3:latest'
-                //sh 'docker tag samplewebapp nikhilnidhi/samplewebapp:$BUILD_NUMBER'
-               
+                               
           }
         }
      
   stage('Publish image to Docker Hub') {
           
             steps {
-        withDockerRegistry([ credentialsId: "dockerhub", url: "https://hub.docker.com/" ]) {
-          sh  'docker push dockertestkumar/proj3:latest'
-        //  sh  'docker push nikhilnidhi/samplewebapp:$BUILD_NUMBER' 
+        withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
+          sh  'docker push dockertestkumar/proj3:latest'        
         }
                   
           }

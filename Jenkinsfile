@@ -23,7 +23,7 @@ pipeline {
            steps {
               
                 sh 'docker build -t proj3:latest .' 
-                sh 'docker tag proj3 dockertestkumar/proj3:latest'
+                sh 'docker tag proj3 dockertestkumar/docker_proj3:latest'
                                
           }
         }
@@ -32,7 +32,7 @@ pipeline {
           
             steps {
         withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
-          sh  'docker push dockertestkumar/proj3:latest'        
+          sh  'docker push dockertestkumar/docker_proj3:latest'        
         }
                   
           }
@@ -42,14 +42,14 @@ pipeline {
              
             steps 
    {
-                sh "docker run -d -p 8081:8080 dockertestkumar/proj3"
+                sh "docker run -d -p 8081:8080 dockertestkumar/docker_proj3"
  
             }
         }
  stage('Run Docker container on remote hosts') {
              
             steps {
-                sh "docker -H ssh://jenkins@3.18.223.5 run -d -p 8081:8080 dockertestkumar/proj3"
+                sh "docker -H ssh://jenkins@3.18.223.5 run -d -p 8081:8080 dockertestkumar/docker_proj3"
  
             }
         }

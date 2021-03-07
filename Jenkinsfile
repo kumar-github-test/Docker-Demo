@@ -42,6 +42,8 @@ pipeline {
              
             steps 
    {
+       script
+       {
        sh "docker ps"
        def imageExists=sh(script: "docker ps | grep 8080 | wc -l", returnStdout: true).trim()
        echo "imageExists: $imageExists"
@@ -51,7 +53,8 @@ pipeline {
        sh "docker ps"     
        }             
        sh "curl -k http://localhost:8084/dockerdemo"      
-            }
+       }
+                  }
         }
  stage('Run Docker container on remote hosts') {
              

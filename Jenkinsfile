@@ -43,7 +43,7 @@ pipeline {
             steps 
    {
        sh "docker ps"
-       def imageExists=sh("docker ps | grep 8080 | wc -l")
+       def imageExists=sh(script: "docker ps | grep 8080 | wc -l", returnStdout: true).trim()
        echo "imageExists: $imageExists"
        if (!imageExists) 
        {

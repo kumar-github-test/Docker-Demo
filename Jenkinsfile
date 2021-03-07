@@ -53,7 +53,7 @@ pipeline {
        sh "docker ps"     
        }
        sh "nslookup localhost"
-       sh "curl http://localhost:8084/Dockerdemo"      
+       sh "curl -X http://localhost:8084/Dockerdemo"      
        }
                   }
         }
@@ -61,7 +61,7 @@ pipeline {
              
             steps {
                 sh "docker ps"  
-                sh "docker -H ssh://root@172.17.0.2 run -d -p 8085:8080 dockertestkumar/docker_proj"
+                sh "docker -H ssh://me@3.136.155.162 run -d -p 8085:8080 dockertestkumar/docker_proj"
                 sh "docker ps"  
             }
         }

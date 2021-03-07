@@ -52,7 +52,7 @@ pipeline {
        sh "docker run -d -p 8084:8080 dockertestkumar/docker_proj"
        sh "docker ps"     
        }             
-       sh "curl -k http://localhost:8084/dockerdemo"      
+       sh "curl -k http://3.136.155.162:8084/Dockerdemo"      
        }
                   }
         }

@@ -47,7 +47,7 @@ pipeline {
        sh "docker ps"
        def imageExists=sh(script: "docker ps | grep 8080 | wc -l", returnStdout: true).trim()
        echo "imageExists: $imageExists"
-       if (!imageExists) 
+       if (imageExists=="0") 
        {
        sh "docker run -d -p 8084:8080 dockertestkumar/docker_proj"
        sh "docker ps"     

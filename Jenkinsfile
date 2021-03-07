@@ -42,15 +42,17 @@ pipeline {
              
             steps 
    {
-                sh "docker run -d -p 8084:8080 dockertestkumar/docker_proj"
- 
+       sh "docker ps"         
+       sh "docker run -d -p 8084:8080 dockertestkumar/docker_proj"
+       sh "docker ps"  
             }
         }
  stage('Run Docker container on remote hosts') {
              
             steps {
-                sh "docker -H ssh://jenkins@52.152.224.93 run -d -p 8084:8080 dockertestkumar/docker_proj"
- 
+                sh "docker ps"  
+                sh "docker -o StrictHostKeyChecking=no -H ssh://jenkins@18.222.253.78 run -d -p 8084:8080 dockertestkumar/docker_proj"
+                sh "docker ps"  
             }
         }
     }

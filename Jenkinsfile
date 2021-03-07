@@ -42,9 +42,14 @@ pipeline {
              
             steps 
    {
-       sh "docker ps"         
+       sh "docker ps"
+       def imageExists=sh("docker ps | grep 8080 | wc -l")
+       echo "imageExists: $imageExists"
+       if (!imageExists) 
+       {
        sh "docker run -d -p 8084:8080 dockertestkumar/docker_proj"
-       sh "docker ps"  
+       sh "docker ps"     
+       }             
        sh "curl -k http://localhost:8084/dockerdemo"      
             }
         }

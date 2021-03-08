@@ -61,7 +61,7 @@ pipeline {
              
             steps {
                 sh "docker ps"  
-                sh "docker -H ssh://root@10.138.0.3 run -d -p 8085:8080 dockertestkumar/docker_proj"
+                sh "docker -H ssh://root@34.82.30.166 run -d -p 8085:8080 dockertestkumar/docker_proj"
                 sh "docker ps"  
             }
         }

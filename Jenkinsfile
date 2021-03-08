@@ -53,7 +53,7 @@ pipeline {
        sh "docker ps"     
        }
        sh "nslookup localhost"
-       sh "curl http://localhost:8084/Dockerdemo"      
+     //  sh "curl http://localhost:8084/Dockerdemo"      
        }
                   }
         }
